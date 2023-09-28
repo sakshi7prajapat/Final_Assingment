@@ -32,8 +32,8 @@ class _SplshScreenState extends State<SplshScreen> {
       body: Center(
         // child: Image(),
         child: Container(
-          height: 300,
-          width: 300,
+          height: 100,
+          width: 100,
           child: Image.asset(
             "assets/images/splashSreen_Image.png",
             fit: BoxFit.cover,

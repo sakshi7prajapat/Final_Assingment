@@ -1,7 +1,12 @@
+import 'package:candidate_flow/scrrens/completeProfilePage.dart';
 import 'package:candidate_flow/scrrens/createAccount.dart';
+import 'package:candidate_flow/scrrens/createAccountWithPhone.dart';
 import 'package:candidate_flow/scrrens/splashScreen.dart';
+import 'package:candidate_flow/scrrens/stepper.dart';
+import 'package:candidate_flow/scrrens/uploadImage.dart';
 import 'package:candidate_flow/scrrens/userSelectionScreen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,16 +18,20 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-       
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
+    return ScreenUtilInit(
+      minTextAdapt: true,
+      splitScreenMode: true,
+      child: MaterialApp(
+        title: 'Flutter Demo',
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+         
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          useMaterial3: true,
+        ),
+        home: CompleteProfile()//CreateAccountWithPhoneNumber() //CreateAccountWithPhoneNumber(),//UserSelection(),
+        // SplshScreen(),
       ),
-      home: CreateAccountScreen(),//UserSelection(),
-      // SplshScreen(),
     );
   }
 }

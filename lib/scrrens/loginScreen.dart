@@ -4,6 +4,7 @@ import 'package:candidate_flow/helping_widgets/text_field.dart';
 import 'package:candidate_flow/scrrens/userSelectionScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -55,82 +56,86 @@ class _LoginScreenState extends State<LoginScreen> {
         bloc: _bloc,
         builder: (context, state) {
           return Scaffold(
-            resizeToAvoidBottomInset: false,
+            // resizeToAvoidBottomInset: false,
             backgroundColor: Color(0xffF3E7D6),
             body: Form(
+              autovalidateMode: AutovalidateMode.onUserInteraction,
               key: _formKey,
-              child: Column(
-                // mainAxisSize: MainAxisSize.min,
-                //mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Image.asset("assets/images/login_image.png"),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 15,
-                  ),
-                  SizedBox(
-                    width: 300,
-                    height: 50,
-                    child: MyTextField(
-                        borderSide:  BorderSide(),
-                        controller: emailController,
-                        hintText: 'EMAIL',
-                        obscureText: false,
-                        
-                        // validator: validator,
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return "Email is required.";
-                          }
-                        },
-                        enabled: true),
-                  ),
-                  SizedBox(
-                    height: 40,
-                  ),
-                  SizedBox(
-                    width: 300,
-                    height: 50,
-                    child: MyTextField(
-                        borderSide: BorderSide(),
-                        controller: passwordController,
-                        hintText: 'PASSWORD',
-                        obscureText: true,
-                        // validator: validator,
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return "Password is required.";
-                          }
-                        },
-                        enabled: true),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(left: 20.0),
-                        child: TextButton(
-                            onPressed: () {},
-                            child: Text(
-                              'Forgot login?',
-                              style: TextStyle(color: Colors.black),
-                            )),
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 40,
-                  ),
-                  _autButton()
-                ],
+              child: SingleChildScrollView(
+                child: Column(
+                  //mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Align(
+                        alignment: Alignment.topLeft,
+                        child: Image.asset("assets/images/login_image.png")),
+                    SizedBox(
+                      height: 15,
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Padding(
+                       padding: const EdgeInsets.symmetric(horizontal: 32.0),
+                      child: MyTextField(
+                          // borderSide:  BorderSide.none,
+                          controller: emailController,
+                          // hintText: 'EMAIL',
+                          obscureText: false,
+                          borderSide: BorderSide.none,
+                          hintText: 'Email',
+                    
+                          // validator: validator,
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return "Email is required.";
+                            }
+                          },
+                          enabled: true),
+                    ),
+                    SizedBox(
+                      height: 40,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 32.0),
+                      child: MyTextField(
+                          borderSide: BorderSide.none,
+                          controller: passwordController,
+                          hintText: 'PASSWORD',
+                          obscureText: true,
+                          // validator: validator,
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return "Password is required.";
+                            }
+                          },
+                          enabled: true),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(left: 20.0),
+                          child: TextButton(
+                              onPressed: () {},
+                              child: Text(
+                                'Forgot login?',
+                                style: TextStyle(color: Colors.black),
+                              )),
+                        ),
+                      ],
+                    ),
+                    
+                    SizedBox(
+                      height: 40,
+                    ),
+                    _autButton()
+                  ],
+                ),
               ),
             ),
           );
@@ -183,9 +188,10 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
           ),
           onPressed: () {
-            if(_formKey.currentState!.validate()){
-            login();
-          }},
+            if (_formKey.currentState!.validate()) {
+              login();
+            }
+          },
           child: const Text(
             'LOG IN',
             style: TextStyle(fontSize: 15, color: Colors.white),
@@ -220,7 +226,16 @@ class _LoginScreenState extends State<LoginScreen> {
         SizedBox(
           height: 10,
         ),
-        MyButton(text: 'SIGN UP', onPressed: () {}, color: Color(0xff85D29C))
+        MyButton(
+            text: 'SIGN UP',
+            onPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => UserSelection(),
+                  ));
+            },
+            color: Color(0xff85D29C))
       ],
     );
   }

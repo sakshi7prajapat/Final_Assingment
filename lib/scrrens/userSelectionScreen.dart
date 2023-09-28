@@ -1,3 +1,4 @@
+import 'package:candidate_flow/scrrens/stepper.dart';
 import 'package:flutter/material.dart';
 
 class UserSelection extends StatefulWidget {
@@ -48,7 +49,10 @@ class _UserSelectionState extends State<UserSelection> {
                       borderRadius: BorderRadiusDirectional.horizontal(
                           start: Radius.circular(50))),
                   backgroundColor: Color(0xff85D29C)),
-              onPressed: () {},
+                  
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => StepperClass()));
+              },
               child: const Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -56,11 +60,13 @@ class _UserSelectionState extends State<UserSelection> {
                     'I need ',
                     style: TextStyle(
                       color: Colors.white,
+                      fontFamily: 'Montserrat'
                     ),
                   ),
                   Text(
                     'a talent agent',
-                    style: TextStyle(color: Color(0xff025B4E)),
+                    style: TextStyle(color: Color(0xff025B4E),
+                    fontFamily: 'Montserrat'),
                   )
                 ],
               )),
@@ -92,11 +98,13 @@ class _UserSelectionState extends State<UserSelection> {
                     'I am a ',
                     style: TextStyle(
                       color: Colors.white,
+                      fontFamily: 'Montserrat'
                     ),
                   ),
                   Text(
                     'talent agent',
-                    style: TextStyle(color: Color(0xff025B4E)),
+                    style: TextStyle(color: Color(0xff025B4E),
+                    fontFamily: 'Montserrat'),
                   )
                 ],
               )),
@@ -132,11 +140,14 @@ class _UserSelectionState extends State<UserSelection> {
                     'I employ ',
                     style: TextStyle(
                       color: Colors.white,
+                      fontFamily: 'Montserrat'
                     ),
                   ),
                   Text(
                     'talent agent',
-                    style: TextStyle(color: Color(0xff025B4E)),
+                    style: TextStyle(color: Color(0xff025B4E),
+                    fontFamily: 'Montserrat'
+                    ),
                   )
                 ],
               )),
